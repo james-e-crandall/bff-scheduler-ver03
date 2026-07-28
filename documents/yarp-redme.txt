@@ -1,0 +1,75 @@
+https://learn.microsoft.com/en-us/aspnet/core/migration/fx-to-core/inc/blazor?view=aspnetcore-7.0
+
+
+https://localhost:7213/Identity/Account/Login
+
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "ReverseProxy": {
+    "Routes": {
+      "blazor-route": {
+        "ClusterId": "blazor-cluster",
+        "Match": {
+          "Path": "{**catch-all}"
+        }
+      }
+    },
+    "Clusters": {
+      "blazor-cluster": {
+        "Destinations": {
+          "destination1": {
+            "Address": "https://localhost:7123" 
+          }
+        }
+      }
+    }
+  }
+}
+
+{
+  "UiDevServerUrl": "https://localhost:4201",
+  "ReverseProxy": {
+    "Routes": {
+        ...
+    },
+    "Clusters": {
+      "cluster1": {
+        "HttpClient": {
+          "SslProtocols": ["Tls12"]
+        },
+        "Destinations": {
+          "cluster1/destination1": {
+            "Address": "https://localhost:4201/"
+            "Address": "https+http://bff-angular"
+          }
+        }
+      }
+    }
+}
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add YARP services
+builder.Services.AddReverseProxy()
+    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+
+var app = builder.Build();
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+// Map YARP routes
+app.MapReverseProxy(); 
+
+app.Run();
+
+
+
+

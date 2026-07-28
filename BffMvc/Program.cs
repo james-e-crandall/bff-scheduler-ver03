@@ -24,6 +24,10 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddReverseProxy()
+        .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+        .AddServiceDiscoveryDestinationResolver();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,5 +56,9 @@ app.MapControllerRoute(
 
 app.MapRazorPages()
    .WithStaticAssets();
+
+
+// Map YARP routes
+app.MapReverseProxy(); 
 
 app.Run();
