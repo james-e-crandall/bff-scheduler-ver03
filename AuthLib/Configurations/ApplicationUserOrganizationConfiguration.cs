@@ -1,6 +1,7 @@
+using AuthLib.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-namespace AuthLib.Models;
+namespace AuthLib.Configurations;
 
 public class ApplicationUserOrganizationConfiguration : IEntityTypeConfiguration<ApplicationUserOrganization>
 {

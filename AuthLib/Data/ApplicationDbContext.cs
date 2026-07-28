@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuthLib.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser, ApplicationRole, string>(options)
 {
 
     public DbSet<ApplicationUserOrganization> ApplicationUserOrganizations { get; set; }

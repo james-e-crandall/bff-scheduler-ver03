@@ -56,6 +56,10 @@ protected override async Task ExecuteAsync(
             await using var transaction = await dbContext.Database
                 .BeginTransactionAsync(cancellationToken);
 
+            dbContext.Roles.AddRange(SeedData.ApplicationRoleList);
+            dbContext.Organizations.AddRange(SeedData.OrganizationList);
+
+
             await dbContext.SaveChangesAsync(cancellationToken);
             await transaction.CommitAsync(cancellationToken);
         });
