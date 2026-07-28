@@ -1,0 +1,18 @@
+@page
+@model BffMvc.Areas.Identity.Pages.Account.LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+
+<section class="mx-auto max-w-md rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200 sm:p-10">
+    <div class="text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700">Session</p>
+        <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900">Sign out</h1>
+        <p class="mt-4 text-slate-600">Are you sure you want to sign out?</p>
+    </div>
+
+    <form method="post" class="mt-8 flex flex-wrap justify-center gap-3">
+        <button type="submit" class="rounded bg-slate-900 px-4 py-2 font-medium text-white transition hover:bg-slate-700">Sign out</button>
+        <a asp-controller="Home" asp-action="Index" class="rounded border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-slate-900 hover:text-slate-950">Cancel</a>
+    </form>
+</section>

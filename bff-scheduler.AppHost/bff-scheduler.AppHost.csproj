@@ -1,0 +1,21 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.4.6">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>950942e0-9bd7-403c-a430-e881c783660c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.Azure.PostgreSQL" Version="13.4.6" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.PostgreSQL.Extensions" Version="13.4.1-beta.687" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuthLib.MigrationService\AuthLib.MigrationService.csproj" />
+    <ProjectReference Include="..\BffMvc\BffMvc.csproj" />
+  </ItemGroup>
+
+</Project>

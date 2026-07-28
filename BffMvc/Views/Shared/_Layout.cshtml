@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BffMvc</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BffMvc.styles.css" asp-append-version="true" />
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-900">
+    <header class="border-b border-slate-200 bg-white/90 shadow-sm backdrop-blur">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+            <a class="text-lg font-semibold text-slate-900" asp-area="" asp-controller="Home" asp-action="Index">BffMvc</a>
+
+            <div class="flex items-center gap-6">
+                <ul class="flex items-center gap-4 text-sm font-medium text-slate-700">
+                    <li>
+                        <a class="transition hover:text-slate-950" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a class="transition hover:text-slate-950" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </nav>
+    </header>
+
+    <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-t border-slate-200 bg-white text-sm text-slate-600">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+            <span>&copy; 2026 - BffMvc</span>
+            <a class="font-medium text-slate-700 transition hover:text-slate-950" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

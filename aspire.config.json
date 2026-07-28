@@ -1,0 +1,5 @@
+{
+  "appHost": {
+    "path": "bff-scheduler.AppHost/bff-scheduler.AppHost.csproj"
+  }
+}

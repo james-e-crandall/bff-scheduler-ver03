@@ -1,0 +1,22 @@
+@page
+@model BffMvc.Areas.Identity.Pages.Account.Manage.IndexModel
+@{
+    ViewData["Title"] = "Manage account";
+}
+
+<section class="mx-auto max-w-2xl rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200 sm:p-10">
+    <div class="mb-6 text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700">Profile</p>
+        <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900">Manage your account</h1>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+        <p class="text-sm text-slate-600">Signed in as</p>
+        <p class="mt-2 text-lg font-semibold text-slate-900">@User.Identity?.Name</p>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+        <a asp-page="/Account/Logout" class="rounded bg-slate-900 px-4 py-2 font-medium text-white transition hover:bg-slate-700">Sign out</a>
+        <a asp-controller="Home" asp-action="Index" class="rounded border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-slate-900 hover:text-slate-950">Back to home</a>
+    </div>
+</section>

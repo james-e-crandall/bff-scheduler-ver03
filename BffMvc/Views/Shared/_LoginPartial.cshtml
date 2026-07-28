@@ -1,0 +1,27 @@
+﻿@using AuthLib.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="flex items-center gap-3 text-sm">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li>
+        <a class="font-medium text-slate-700 transition hover:text-slate-950" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+    </li>
+    <li>
+        <form class="m-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="rounded bg-slate-900 px-3 py-2 font-medium text-white transition hover:bg-slate-700">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li>
+        <a class="rounded border border-slate-300 px-3 py-2 font-medium text-slate-700 transition hover:border-slate-900 hover:text-slate-950" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li>
+        <a class="rounded bg-slate-900 px-3 py-2 font-medium text-white transition hover:bg-slate-700" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>

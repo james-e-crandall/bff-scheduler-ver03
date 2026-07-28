@@ -1,0 +1,17 @@
+@page
+@model BffMvc.Areas.Identity.Pages.Account.LockoutModel
+@{
+    ViewData["Title"] = "Locked out";
+}
+
+<section class="mx-auto max-w-lg rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200 sm:p-10">
+    <div class="text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700">Security notice</p>
+        <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900">This account has been locked</h1>
+        <p class="mt-4 text-slate-600">Please try again later or contact support to regain access.</p>
+    </div>
+
+    <div class="mt-6 text-center">
+        <a asp-page="./Login" class="rounded bg-slate-900 px-4 py-2 font-medium text-white transition hover:bg-slate-700">Back to sign in</a>
+    </div>
+</section>

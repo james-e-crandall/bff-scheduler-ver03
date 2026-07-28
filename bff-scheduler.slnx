@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="AuthLib.MigrationService/AuthLib.MigrationService.csproj" />
+  <Project Path="AuthLib/AuthLib.csproj" />
+  <Project Path="bff-scheduler.AppHost/bff-scheduler.AppHost.csproj" />
+  <Project Path="bff-scheduler.ServiceDefaults/bff-scheduler.ServiceDefaults.csproj" />
+  <Project Path="BffMvc/BffMvc.csproj" />
+</Solution>
