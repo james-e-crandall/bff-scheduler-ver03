@@ -16,7 +16,6 @@ var requireConfirmedAccount = true;
 if(builder.Environment.IsDevelopment())
 {
     requireConfirmedAccount = false;
-
 }
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = requireConfirmedAccount)
@@ -24,9 +23,9 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddReverseProxy()
-        .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
-        .AddServiceDiscoveryDestinationResolver();
+// builder.Services.AddReverseProxy()
+//         .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+//         .AddServiceDiscoveryDestinationResolver();
 
 var app = builder.Build();
 
@@ -59,6 +58,6 @@ app.MapRazorPages()
 
 
 // Map YARP routes
-app.MapReverseProxy(); 
+//app.MapReverseProxy(); 
 
 app.Run();

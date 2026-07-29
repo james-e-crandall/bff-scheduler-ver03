@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { LoginPartial } from '../../login/login-partial/login-partial';
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [LoginPartial],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })

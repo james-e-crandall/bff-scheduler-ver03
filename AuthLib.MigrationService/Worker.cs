@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using AuthLib.Data;
+using AuthLib.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuthLib.MigrationService;
@@ -56,12 +57,39 @@ protected override async Task ExecuteAsync(
             await using var transaction = await dbContext.Database
                 .BeginTransactionAsync(cancellationToken);
 
-            dbContext.Roles.AddRange(SeedData.ApplicationRoleList);
-            dbContext.Organizations.AddRange(SeedData.OrganizationList);
+            var localIds = SeedData.ApplicationRoleList.Select(_x => _x.Id).ToList();
 
+            //ApplicationRoleList
+            // Get existing IDs from database
+            List<string> existingRoleIds = await dbContext.Roles
+                .Where(p => SeedData.ApplicationRoleList.Select(dto => dto.Id).Contains(p.Id))
+                .Select(p => p.Id)
+                .ToListAsync();
+
+            // Get the full objects that are missing by matching against the ID property
+            List<ApplicationRole> missingRoles = SeedData.ApplicationRoleList
+                .ExceptBy(existingRoleIds, dto => dto.Id)
+                .ToList();
+
+            dbContext.Roles.AddRange(missingRoles);
+
+            //OrganizationList
+            // Get existing IDs from database
+            List<int> existingOrganizationIds = await dbContext.Organizations
+                .Where(p => SeedData.OrganizationList.Select(dto => dto.Id).Contains(p.Id))
+                .Select(p => p.Id)
+                .ToListAsync();
+
+            // Get the full objects that are missing by matching against the ID property
+            List<Organization> missingOrganization = SeedData.OrganizationList
+                .ExceptBy(existingOrganizationIds, dto => dto.Id)
+                .ToList();
+
+            dbContext.Organizations.AddRange(missingOrganization);
 
             await dbContext.SaveChangesAsync(cancellationToken);
             await transaction.CommitAsync(cancellationToken);
         });
     }
+
 }

@@ -11,13 +11,27 @@
                       <a class="transition hover:text-slate-950" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                   </li>
               </ul>
+              <app-login-partial></app-login-partial>
           </div>
+
       </nav>
   </header>
 
   <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <main role="main" class="pb-3">
-          @RenderBody()
+        <section class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200 sm:p-12">
+            <div class="max-w-3xl">
+                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700">Tailwind-ready MVC</p>
+                <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Welcome to your Tailwind-styled BffMvc app.</h1>
+                <p class="mt-4 text-lg text-slate-600">
+                    The app shell and shared navigation now use Tailwind utilities for a clean, modern look.
+                </p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <a class="rounded bg-slate-900 px-4 py-2 font-medium text-white transition hover:bg-slate-700" asp-area="" asp-controller="Home" asp-action="Privacy">Review privacy</a>
+                    <a class="rounded border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-slate-900 hover:text-slate-950" href="https://learn.microsoft.com/aspnet/core">ASP.NET Core docs</a>
+                </div>
+            </div>
+        </section>
       </main>
   </div>
 
