@@ -2,7 +2,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li>
-        <a class="font-medium text-slate-700 transition hover:text-slate-950" href="/Account/Manage/Index">Hello {{User.Identity?.Name}}!</a>
+        <a class="font-medium text-slate-700 transition hover:text-slate-950" href="/Identity/Account/Manage/Index">Hello {{User.Identity?.Name}}!</a>
     </li>
     <li>
         <!-- <form class="m-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -13,10 +13,10 @@
 @else
 {
     <li>
-        <a class="rounded border border-slate-300 px-3 py-2 font-medium text-slate-700 transition hover:border-slate-900 hover:text-slate-950"  href="/Account/Register">Register</a>
+        <a class="rounded border border-slate-300 px-3 py-2 font-medium text-slate-700 transition hover:border-slate-900 hover:text-slate-950"  href="/Identity/Account/Register">Register</a>
     </li>
     <li>
-        <a class="rounded bg-slate-900 px-3 py-2 font-medium text-white transition hover:bg-slate-700" href="/Account/Login">Login</a>
+        <a class="rounded bg-slate-900 px-3 py-2 font-medium text-white transition hover:bg-slate-700" href="/Identity/Account/Login">Login</a>
     </li>
 }
 </ul>

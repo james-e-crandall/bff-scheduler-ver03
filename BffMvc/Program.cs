@@ -21,11 +21,15 @@ if(builder.Environment.IsDevelopment())
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = requireConfirmedAccount)
     .AddRoles<ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
 
-// builder.Services.AddReverseProxy()
-//         .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
-//         .AddServiceDiscoveryDestinationResolver();
+//builder.Services.AddControllersWithViews();
+
+// 1. Add Razor Pages services to the DI container
+builder.Services.AddRazorPages(); 
+
+builder.Services.AddReverseProxy()
+        .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+        .AddServiceDiscoveryDestinationResolver();
 
 var app = builder.Build();
 
@@ -48,16 +52,15 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+// app.MapControllerRoute(
+//     name: "default",
+//     pattern: "{controller=Home}/{action=Index}/{id?}")
+//     .WithStaticAssets();
 
 app.MapRazorPages()
    .WithStaticAssets();
 
-
 // Map YARP routes
-//app.MapReverseProxy(); 
+app.MapReverseProxy(); 
 
 app.Run();
