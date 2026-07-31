@@ -1,7 +1,5 @@
 export interface User {
-  Identity:Identity
+  isAuthenticated?:boolean;
+  name?:string
 }
 
-export interface Identity {
-  Name?:string
-}

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { User } from '../User';
 import { SignInManager } from '../sign-in-manager';
+import { UserManager } from '../user-manager';
 
 @Component({
   selector: 'app-login-partial',
@@ -10,7 +11,7 @@ import { SignInManager } from '../sign-in-manager';
 })
 export class LoginPartial {
   SignInManager = inject(SignInManager);
-  public User:User = {
-    Identity: { Name: 'test' }
-  }
+  UserManager = inject(UserManager);
+
+  public user = this.UserManager.getUserResource();
 }

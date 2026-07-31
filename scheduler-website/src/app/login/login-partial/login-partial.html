@@ -1,22 +1,39 @@
 <ul class="flex items-center gap-3 text-sm">
-@if (SignInManager.IsSignedIn(User))
-{
+@if (user.hasValue()) {
+  @if (SignInManager.IsSignedIn(user.value()))
+  {
     <li>
-        <a class="font-medium text-slate-700 transition hover:text-slate-950" href="/Identity/Account/Manage/Index">Hello {{User.Identity?.Name}}!</a>
+      IsAuthenticated: {{ user.value().isAuthenticated }}
     </li>
     <li>
-        <!-- <form class="m-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <a class="font-medium text-slate-700 transition hover:text-slate-950" href="/Identity/Account/Manage/Index">Hello {{user.value()?.name}}!</a>
+    </li>
+    <li>
+        <form class="m-0">
             <button type="submit" class="rounded bg-slate-900 px-3 py-2 font-medium text-white transition hover:bg-slate-700">Logout</button>
-        </form> -->
+        </form>
     </li>
-}
-@else
-{
+  }
+  @else
+  {
+    <li>
+      IsAuthenticated: {{ user.value().isAuthenticated }}
+    </li>
     <li>
         <a class="rounded border border-slate-300 px-3 py-2 font-medium text-slate-700 transition hover:border-slate-900 hover:text-slate-950"  href="/Identity/Account/Register">Register</a>
     </li>
     <li>
         <a class="rounded bg-slate-900 px-3 py-2 font-medium text-white transition hover:bg-slate-700" href="/Identity/Account/Login">Login</a>
     </li>
+  }
+} @else if (user.error()) {
+  <li>
+    <div>Could not load user information</div>
+  </li>
+
+} @else if (user.isLoading()) {
+  <li>
+    <div>Loading user info...</div>
+  </li>
 }
 </ul>

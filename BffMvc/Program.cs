@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AuthLib.Data;
 using AuthLib.Models;
+using BffMvc.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,6 +60,9 @@ app.MapStaticAssets();
 
 app.MapRazorPages()
    .WithStaticAssets();
+
+app.MapGroup("bff")
+    .MapUserEndpoints();
 
 // Map YARP routes
 app.MapReverseProxy(); 
